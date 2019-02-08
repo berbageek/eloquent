@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePostTopicsTable extends Migration
+class CreatePostTopicTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreatePostTopicsTable extends Migration
      */
     public function up()
     {
-        Schema::create('post_topics', function (Blueprint $table) {
+        Schema::create('post_topic', function (Blueprint $table) {
             $table->unsignedInteger('post_id');
             $table->unsignedInteger('topic_id');
             $table->primary(['post_id', 'topic_id']);

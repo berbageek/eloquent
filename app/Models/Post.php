@@ -10,4 +10,9 @@ class Post extends Model
     {
         return $this->belongsTo(User::class, 'author_id');
     }
+
+    public function topics()
+    {
+        return $this->belongsToMany(Topic::class)->withTimestamps();
+    }
 }
