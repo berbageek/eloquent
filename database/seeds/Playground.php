@@ -67,5 +67,16 @@ class Playground extends Seeder
         $comment->post()->associate($post);
         $comment->save();
 
+        /*
+         * Insert relasi many to many
+        */
+        $this->call(TopicsTableSeeder::class);
+
+        $post = \App\Models\Post::first();
+        // $post->topics()->attach(\App\Models\Topic::first());
+        // $post->topics()->detach(\App\Models\Topic::first());
+        // $post->topics()->attach(\App\Models\Topic::get()->random());
+        $post->topics()->sync(\App\Models\Topic::get()->random(5));
+        $post->topics()->sync([]);
     }
 }
