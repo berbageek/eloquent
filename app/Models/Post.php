@@ -15,4 +15,9 @@ class Post extends Model
     {
         return $this->belongsToMany(Topic::class)->withTimestamps();
     }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }

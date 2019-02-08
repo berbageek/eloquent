@@ -50,5 +50,22 @@ class Playground extends Seeder
         $profile = \App\Models\UserProfile::make(['location' => 'Bandung', 'bio' => 'Urang Deuy']);
         $user->profile()->save($profile);
 
+        /*
+         * Insert relasi hasMany
+        */
+        $post = \App\Models\Post::make(['title' => 'Laravel For Beginner', 'content' => '...']);
+        $post->author()->associate($user);
+        $post->save();
+
+        // Cara 1
+        $data = ['content' => 'Cakep bro', 'post_id' => 1, 'author_id' => 1];
+        \App\Models\Comment::create($data);
+
+        // Cara 2
+        $comment = new \App\Models\Comment(['content' => 'Lanjutkan gan']);
+        $comment->author()->associate($user);
+        $comment->post()->associate($post);
+        $comment->save();
+
     }
 }
